@@ -1,11 +1,14 @@
 package com.bid4cc.demo;
 
 
+import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -13,6 +16,7 @@ import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,6 +37,7 @@ public class HomeFragment extends Fragment {
     Unbinder unbinder;
     private AlbumsAdapter adapter;
     private List<Album> albumList;
+    private ActionBar supportActionBar;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -57,10 +62,17 @@ public class HomeFragment extends Fragment {
         return view;
     }
 
+
+    private void setupToolbar() {
+        supportActionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
+        TextView view = getActivity().findViewById(R.id.tv_subTitle);
+        view.setText("Check out our products");
+    }
+
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
+        setupToolbar();
         albumList = new ArrayList<>();
         adapter = new AlbumsAdapter(getContext(), albumList);
 
@@ -138,22 +150,22 @@ public class HomeFragment extends Fragment {
                 R.drawable.im_default_nav_profile,
                 R.drawable.im_default_nav_profile};
 
-        Album a = new Album("True Romance", 13, covers[0]);
+        Album a = new Album("Access Control", 13, covers[0]);
         albumList.add(a);
 
-        a = new Album("Xscpae", 8, covers[1]);
+        a = new Album("Biometrics and RFID", 8, covers[1]);
         albumList.add(a);
 
-        a = new Album("Maroon 5", 11, covers[2]);
+        a = new Album("CCTV", 11, covers[2]);
         albumList.add(a);
 
-        a = new Album("Born to Die", 12, covers[3]);
+        a = new Album("Cards", 12, covers[3]);
         albumList.add(a);
 
-        a = new Album("Honeymoon", 14, covers[4]);
+        a = new Album("Entrance Control", 14, covers[4]);
         albumList.add(a);
 
-        a = new Album("I Need a Doctor", 1, covers[5]);
+        a = new Album("Lock Accessory", 1, covers[5]);
         albumList.add(a);
 
         a = new Album("Loud", 11, covers[6]);

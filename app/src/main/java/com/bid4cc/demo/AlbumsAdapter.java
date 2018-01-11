@@ -24,6 +24,7 @@ public class AlbumsAdapter extends RecyclerView.Adapter<AlbumsAdapter.MyViewHold
 
     private Context mContext;
     private List<Album> albumList;
+    private ProductCategoryDetailFragment productCategoryDetailFragment;
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView title, count;
@@ -35,6 +36,17 @@ public class AlbumsAdapter extends RecyclerView.Adapter<AlbumsAdapter.MyViewHold
             count = (TextView) view.findViewById(R.id.count);
             thumbnail = (ImageView) view.findViewById(R.id.thumbnail);
             overflow = (ImageView) view.findViewById(R.id.overflow);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    ((HomePage)mContext).showProductDetail(title.getText().toString());
+
+//                    Toast.makeText(mContext, "Item Clicked", Toast.LENGTH_SHORT).show();
+
+                }
+            });
         }
     }
 
@@ -56,7 +68,7 @@ public class AlbumsAdapter extends RecyclerView.Adapter<AlbumsAdapter.MyViewHold
     public void onBindViewHolder(final MyViewHolder holder, int position) {
         Album album = albumList.get(position);
         holder.title.setText(album.getName());
-        holder.count.setText(album.getNumOfSongs() + " songs");
+        holder.count.setText(album.getNumOfSongs() + " products");
 
         // loading album cover using Glide library
         Picasso.with(mContext).load(album.getThumbnail()).into(holder.thumbnail);

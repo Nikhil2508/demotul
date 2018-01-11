@@ -48,7 +48,10 @@ public class HomePage extends AppCompatActivity
     NavigationView navView;
     @BindView(R.id.drawer_layout)
     DrawerLayout drawer;
+    @BindView(R.id.tv_subTitle)
+    TextView tvSubTitle;
     private HomeFragment homeFragment;
+    private ProductCategoryDetailFragment productCategoryDetailFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,7 +82,7 @@ public class HomePage extends AppCompatActivity
         textSliderView
                 .description("Game of Thrones")
                 .image("http://www.gettyimages.in/gi-resources/images/Embed/new/embed2.jpg");
-//
+
 //        slider.addSlider(textSliderView);
 
 
@@ -123,8 +126,18 @@ public class HomePage extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
+
         } else {
-            super.onBackPressed();
+            if (homeFragment != null && homeFragment.isVisible()) {
+
+                super.onBackPressed();
+
+            } else {
+
+                getSupportFragmentManager().popBackStack();
+                homeFragment = HomeFragment.newInstance();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fl_container, homeFragment, HomeFragment.class.toString()).commit();
+            }
         }
     }
 
@@ -187,4 +200,11 @@ public class HomePage extends AppCompatActivity
     }
 
 
+    public void showProductDetail(String title) {
+
+
+        productCategoryDetailFragment = ProductCategoryDetailFragment.newInstance(title);
+        getSupportFragmentManager().beginTransaction().replace(R.id.fl_container, productCategoryDetailFragment, HomeFragment.class.toString()).commit();
+
+    }
 }
