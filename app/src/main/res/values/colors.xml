@@ -2,7 +2,7 @@
 <resources>
     <color name="colorPrimary">@color/blue</color>
     <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorAccent">@color/white</color>
 
     <color name="white">#ffffff</color>
     <color name="light_grey">#bab4b4</color>
@@ -10,7 +10,7 @@
     <color name="light_grey3">#d1d1d1</color>
     <color name="dark_grey">#161616</color>
     <color name="dark_grey2">#767676</color>
-    <color name="blue">#2472ba</color>
+    <color name="blue">#2196f3</color>
     <color name="green1">#029f70</color>
     <color name="transparent_green">#20029f70</color>
     <color name="black">#000000</color>

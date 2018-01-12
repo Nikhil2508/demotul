@@ -2,9 +2,12 @@ package com.bid4cc.demo;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import butterknife.BindView;
@@ -54,4 +57,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+
+
 }
+
+
